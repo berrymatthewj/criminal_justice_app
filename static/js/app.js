@@ -3,7 +3,7 @@
 //===============================
 
 // Create URL to the Flask app route
-const url = process.env.MONGODB_URI;
+const url = System.getenv('MONGODB_URI');
 
 //-------------------------
 //  Dropdown menu
