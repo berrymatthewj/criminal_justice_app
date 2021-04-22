@@ -1,7 +1,6 @@
 from flask import Flask, render_template
-
-# Import our pymongo library, which lets us connect our Flask app to our Mongo database.
 import pymongo
+from bson.json_util import dumps
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
@@ -18,12 +17,14 @@ db = client.project_2
 # Set route
 @app.route('/')
 def index():
-    # Store the entire team collection in a list
-    results = list(db.incarceration.find())
-    print(results)
+    query = list(db.incarceration.find())
+    return render_template("index.html", query=query)
+    
 
-    # Return the template with the teams list passed in
-    return render_template('index.html', results=results)
+@app.route('/loadData')
+def loadData():
+    query = list(db.incarceration.find({},{'_id': False}))
+    return dumps(query)     
 
 
 if __name__ == "__main__":
