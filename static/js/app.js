@@ -62,7 +62,7 @@ function stateSummaryInfo(chosenYear, chosenState) {
     d3.json(url).then((data) => {
 
         var filteredData = data.filter(d => (d.year === chosenYear) && (d.jurisdiction === chosenState))
-        console.log(filteredData);
+        //console.log(filteredData);
 
         // use d3 to select 'Summary Info' panel by id
         var infoPanel = d3.select("#sumState");
@@ -89,7 +89,7 @@ function buildPieChart(chosenYear, chosenState) {
     d3.json(url).then((data) => {
 
         var filteredData = data.filter(d => (d.year === chosenYear) && (d.jurisdiction === chosenState))
-        console.log(filteredData);
+        //console.log(filteredData);
 
         //-------------------------
         //  Pie Chart
@@ -108,7 +108,7 @@ function buildPieChart(chosenYear, chosenState) {
                 //violent_crime_total: +d.violent_crime_total
             }
         });
-        console.log(dataArray);
+        //console.log(dataArray);
 
         var values = [];
         var labels = [];
@@ -160,7 +160,7 @@ function unpack(rows, key) {
 function buildLinePlot(chosenState) {
     d3.json(url).then((data) => {
         var filteredData = data.filter(d => d.jurisdiction === chosenState)
-        console.log(filteredData);
+        //console.log(filteredData);
 
         var trace1 = {
             x: unpack(filteredData, 'year'),
@@ -193,7 +193,7 @@ function buildLinePlot(chosenState) {
 function buildMap(chosenYear) {
     d3.json(url).then((data) => {
         var filteredData = data.filter(d => d.year === chosenYear)
-        console.log(filteredData);
+        //console.log(filteredData);
 
         var dataArray = filteredData.map(function(d) {
             return {
@@ -203,7 +203,7 @@ function buildMap(chosenYear) {
                 prisoner_count: +d.prisoner_count
             }
         });
-        console.log(dataArray);
+        //console.log(dataArray);
 
         var mapData = [{
             type: 'choropleth',
