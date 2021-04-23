@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # Create connection variable
-conn = os.environ.get('MONGODB_URI')
+conn = os.environ.get('mongodb+srv://Hbrnk0909:Mall4242@cluster0.zk2ds.mongodb.net/project_2?retryWrites=true&w=majority')
 
 # Pass connection to the pymongo instance.
 client = pymongo.MongoClient(conn)
