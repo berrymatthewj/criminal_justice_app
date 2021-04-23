@@ -18,9 +18,8 @@ db = client.project_2
 # Set route
 @app.route('/')
 def index():
-    # query = list(db.incarceration.find())
-    return render_template("index.html")
-    #query=query
+    query = list(db.incarceration.find())
+    return render_template("index.html", query=query)
     
 
 @app.route('/loadData')
