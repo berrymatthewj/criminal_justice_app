@@ -1,12 +1,13 @@
 from flask import Flask, render_template
 import pymongo
 from bson.json_util import dumps
+import os
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
 
 # Create connection variable
-conn = 'mongodb://localhost:27017'
+conn = os.environ.get('MONGODB_URI')
 
 # Pass connection to the pymongo instance.
 client = pymongo.MongoClient(conn)
