@@ -17,16 +17,13 @@ function dropDownMenu() {
     var dropdownState = d3.select("#selState");
 
     // Load data from  file and assign to variable
-    d3.json(url).then(function(data) {
-        console.log(data);
+    d3.json(url).then(function(data) {        
 
         // create list of unique values of years
-        var allYears = d3.map(data, function(d) { return (d.year) }).keys();
-        //console.log(allYears);      
+        var allYears = d3.map(data, function(d) { return (d.year) }).keys();              
 
         // create list of unique values of states
-        var allStates = d3.map(data, function(d) { return (d.jurisdiction) }).keys();
-        //console.log(allStates);
+        var allStates = d3.map(data, function(d) { return (d.jurisdiction) }).keys();        
 
         // create dropdown menu for Years
         for (var i = 0; i < allYears.length; i++) {
@@ -60,9 +57,7 @@ function dropDownMenu() {
 function stateSummaryInfo(chosenYear, chosenState) {
 
     d3.json(url).then((data) => {
-
-        var filteredData = data.filter(d => (d.year === chosenYear) && (d.jurisdiction === chosenState))
-        //console.log(filteredData);
+        var filteredData = data.filter(d => (d.year === chosenYear) && (d.jurisdiction === chosenState))        
 
         // use d3 to select 'Summary Info' panel by id
         var infoPanel = d3.select("#sumState");
@@ -85,11 +80,10 @@ function stateSummaryInfo(chosenYear, chosenState) {
 
 // Create a function to build plots
 function buildPieChart(chosenYear, chosenState) {
+
     // use d3 to fetch the data for the plots
     d3.json(url).then((data) => {
-
-        var filteredData = data.filter(d => (d.year === chosenYear) && (d.jurisdiction === chosenState))
-        //console.log(filteredData);
+        var filteredData = data.filter(d => (d.year === chosenYear) && (d.jurisdiction === chosenState))        
 
         //-------------------------
         //  Pie Chart
@@ -100,15 +94,12 @@ function buildPieChart(chosenYear, chosenState) {
                 agg_assault: +d.agg_assault,
                 burglary: +d.burglary,
                 larceny: +d.larceny,
-                murder_manslaughter: +d.murder_manslaughter,
-                //property_crime_total: +d.property_crime_total,
+                murder_manslaughter: +d.murder_manslaughter,                
                 rape_legacy: +d.rape_legacy,
                 robbery: +d.robbery,
-                vehicle_theft: +d.vehicle_theft,
-                //violent_crime_total: +d.violent_crime_total
+                vehicle_theft: +d.vehicle_theft                
             }
-        });
-        //console.log(dataArray);
+        });        
 
         var values = [];
         var labels = [];
@@ -116,10 +107,7 @@ function buildPieChart(chosenYear, chosenState) {
         Object.entries(dataArray[0]).forEach(([key, value]) => {
             values.push(value);
             labels.push(key);
-        });
-
-        // console.log(values);
-        // console.log(labels);
+        });        
 
         var pieChartData = [{
             values: values,
@@ -160,7 +148,7 @@ function unpack(rows, key) {
 function buildLinePlot(chosenState) {
     d3.json(url).then((data) => {
         var filteredData = data.filter(d => d.jurisdiction === chosenState)
-        //console.log(filteredData);
+       
 
         var trace1 = {
             x: unpack(filteredData, 'year'),
@@ -193,7 +181,7 @@ function buildLinePlot(chosenState) {
 function buildMap(chosenYear) {
     d3.json(url).then((data) => {
         var filteredData = data.filter(d => d.year === chosenYear)
-        //console.log(filteredData);
+        
 
         var dataArray = filteredData.map(function(d) {
             return {
@@ -203,7 +191,7 @@ function buildMap(chosenYear) {
                 prisoner_count: +d.prisoner_count
             }
         });
-        //console.log(dataArray);
+        
 
         var mapData = [{
             type: 'choropleth',
@@ -220,15 +208,12 @@ function buildMap(chosenYear) {
         var layout = {
             title: "Number of Prisoners in Each State, " + `${chosenYear}`,
             geo: {
-                scope: 'usa',
-                //countrycolor: 'rgb(255, 255, 255)',
+                scope: 'usa',                
                 showland: true,
                 landcolor: 'rgb(217, 217, 217)',
                 showlakes: true,
                 lakecolor: 'rgb(255, 255, 255)',
-                subunitcolor: 'rgb(255, 255, 255)',
-                //lonaxis: {},
-                //lataxis: {}
+                subunitcolor: 'rgb(255, 255, 255)',                
             }
         };
 
@@ -254,8 +239,7 @@ function optionChanged(chosenYear, chosenState) {
     if (newYear !== chosenYear) {
 
         // replaces chosenYear with a new value
-        chosenYear = newYear;
-        //console.log(chosenYear);
+        chosenYear = newYear;        
     }
 
     // get value of the next state selection
@@ -263,8 +247,7 @@ function optionChanged(chosenYear, chosenState) {
     if (newState != chosenState) {
 
         // replace chosenState with a new value
-        chosenState = newState;
-        //console.log(newState);
+        chosenState = newState;        
     }
 
     // update plots with the new values
