@@ -10,7 +10,7 @@
     <!-- Load plotly.js into the DOM -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- Load d3.js -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
@@ -93,10 +93,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <!-- Bootstrap js -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    <!-- JavaScript file -->
-    <!-- <script src="../static/js/app.js"></script> -->
-    <!-- <script src="../app.py"></script> -->
+    <!-- JavaScript file -->    
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
