@@ -10,12 +10,12 @@ body {
 }
 
 #footer {
-  position: relative; /* absolute; */
+  position: absolute;
   bottom: 0;
   width: 100%; /* Set the fixed height of the footer here */
   height: 10px;
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   text-align: center;
   background-color: #f5f5f5;
 }
@@ -23,4 +23,20 @@ body {
 #footer p {
   margin: 0;
   font-size: 16px;
+}
+
+/* Data Table button style */
+.btn {
+  border: 1px solid #0598df;
+  background: #fff;
+  color: #0598df;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 5px 0;
+  display: inline-block;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  font-weight: normal;
+  padding: 10px 10px;
+  font-size: 14px;
 }
