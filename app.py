@@ -18,10 +18,14 @@ db = client.project_2
 
 # Set route
 @app.route('/')
-def index():
-    # query = list(db.incarceration.find())
+def index():    
     return render_template("index.html")
-    #query=query
+    
+
+# embedded Pivot Table using WebDataRocks
+@app.route('/dataTable')
+def dataTable():
+    return render_template("datatable.html")
     
 
 @app.route('/loadData')

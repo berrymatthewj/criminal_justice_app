@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+  <title>Customizing Pivot Table | Trends In Crime</title>
+  <!-- bootstrap min.css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- webdatarocks min.css -->
+  <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet" />  
+  <!-- load webdatarocks cdn -->
+  <script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+  <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>  
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+        <!-- Jumbotron -->
+        <div class="col-md-12 jumbotron text-center">
+            <h1>Trends In Crime</h1>
+            <p>Use the interactive pivot table below to explore the dataset:</p>
+        </div>
+    </div>
+    <!-- /. jumbotron row -->
+
+    <div class="container">
+      <div class="row">
+        <!-- Insert Button -->
+        <div class="col-md-3">
+          <a href="/" class="btn btn-primary btn-lg" role="button">❮ Back to Dashboard</a>
+        </div>                  
+      </div>    
+
+      <!-- WebDataRocks embedded pivot table -->    
+      <div class="row">
+        <div id="wdr-component"></div>
+      </div>
+    </div>
+    <!-- /. container -->
+
+  </div>
+  <!-- /.container -->
+  
+
+  <!-- Footer-->
+  <div id="footer">
+    <p>Project-2</p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <!-- Bootstrap js -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- JavaScript file -->    
+  <script src="{{ url_for('static', filename='js/datatable.js') }}"></script>
+
+</body>
+</html>
