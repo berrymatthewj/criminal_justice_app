@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
-    <title>Project 2</title>
+    <title>Trends In Crime | Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Load plotly.js into the DOM -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -24,7 +24,7 @@
         <div class="row">
             <!-- Jumbotron -->
             <div class="col-md-12 jumbotron text-center">
-                <h1>Project 2 Dashboard</h1>
+                <h1>Trends In Crime</h1>
                 <p>Use the interactive charts below to explore the dataset:</p>
             </div>
         </div>
@@ -53,14 +53,15 @@
             <div class="col-md-9">
                 <div class="row">
                     <!-- Insert Pie chart -->
-                    <div class="col-md-6">
+                    <div class="col-md-9">
                         <div id="pie"></div>
                     </div>
-                    <!-- Insert Bar Chart -->
-                    <!-- <div class="col-md-6">
-                        <div id="bar"></div>
-                    </div> -->
+                    <!-- Insert Button -->
+                    <div class="col-md-3">
+                        <a href="/dataTable" class="btn btn-primary btn-lg" role="button" >Data Table ❯</a>
+                    </div>                    
                 </div>
+                <!-- /. row -->
 
                 <!-- Insert Line chart -->
                 <div class="row">
@@ -87,7 +88,7 @@
 
     <!-- Footer-->
     <div id="footer">
-        <!-- <p>Project-2</p> -->
+        <p>Project-2</p>
     </div>
 
     <!-- Scripts -->
