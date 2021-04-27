@@ -30,7 +30,7 @@ def dataTable():
 
 @app.route('/loadData')
 def loadData():
-    query = list(db.incarceration.find({},{'_id': False}))
+    query = list(db.incarceration_ratio.find({},{'_id': False}))
     return dumps(query)     
 
 
