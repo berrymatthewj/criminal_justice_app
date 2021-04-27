@@ -147,21 +147,34 @@ function unpack(rows, key) {
 //-------------------------
 function buildLinePlot(chosenState) {
     d3.json(url).then((data) => {
-        var filteredData = data.filter(d => d.jurisdiction === chosenState)
-       
+        var filteredData = data.filter(d => d.jurisdiction === chosenState)       
 
+        var propertyCrime = unpack(filteredData, "property_crime_total");
+        var violentCrime = unpack(filteredData, "violent_crime_total");
+        var population = unpack(filteredData, "state_population")        
+
+        var propCrimeRate = []
+        for (var i=0; i < propertyCrime.length; i++) {
+        propCrimeRate.push(propertyCrime[i] / population[i] * 100000);      
+        }        
+
+        var violentCrimeRate =[];
+        for (var i=0; i < violentCrime.length; i++) {
+        violentCrimeRate.push(violentCrime[i] / population[i] * 100000);
+        }        
+        
         var trace1 = {
-            x: unpack(filteredData, 'year'),
-            y: unpack(filteredData, "property_crime_total"),
-            type: 'scatter',
-            name: "Property Crime, Total"
+            x: unpack(filteredData, 'year'),            
+            y: propCrimeRate,
+            type: 'scatter',            
+            name: "Property Crime Rate<br>(per 100,000 population)<br>"
         };
 
         var trace2 = {
-            x: unpack(filteredData, 'year'),
-            y: unpack(filteredData, "violent_crime_total"),
-            type: 'scatter',
-            name: "Violent Crime, Total"
+            x: unpack(filteredData, 'year'),            
+            y: violentCrimeRate,
+            type: 'scatter',            
+            name: "Violent Crime Rate<br>(per 100,000 population)"
         };
 
         var data = [trace1, trace2];
@@ -190,17 +203,21 @@ function buildMap(chosenYear) {
                 state_population: +d.state_population,
                 prisoner_count: +d.prisoner_count
             }
-        });
-        
+        });        
+
+        var prisonersRate = []
+        for (var i=0; i < dataArray.length; i++) {
+        prisonersRate.push(dataArray[i].prisoner_count / dataArray[i].state_population * 100000);      
+        }        
 
         var mapData = [{
             type: 'choropleth',
             locationmode: 'USA-states',
-            locations: unpack(dataArray, 'location'),
-            z: unpack(dataArray, 'prisoner_count'),
+            locations: unpack(dataArray, 'location'),            
+            z: prisonersRate,
             text: unpack(dataArray, "jurisdiction"),
             colorbar: {
-                title: '<b># of Prisoners</b>'
+                title: '<b># of Prisoners</b><br>(per 100,000 population)'
             },
             autocolorscale: true
         }];
